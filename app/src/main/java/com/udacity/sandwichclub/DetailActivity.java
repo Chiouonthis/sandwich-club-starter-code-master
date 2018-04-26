@@ -55,6 +55,11 @@ public class DetailActivity extends AppCompatActivity {
                 .into(ingredientsIv);
 
         setTitle(sandwich.getMainName());
+
+        mDescription.setText(sandwich.getDescription());
+        mOrigin.setText(sandwich.getPlaceOfOrigin());
+
+
     }
 
     private void closeOnError() {
