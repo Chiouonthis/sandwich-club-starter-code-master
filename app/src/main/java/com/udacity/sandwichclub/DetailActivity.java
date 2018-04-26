@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -21,6 +22,10 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         ImageView ingredientsIv = findViewById(R.id.image_iv);
+        TextView mAlsoKnownAs = findViewById(R.id.also_known_tv);
+        TextView mOrigin = findViewById(R.id.origin_tv);
+        TextView mDescription = findViewById(R.id.description_tv);
+        TextView mIngredients = findViewById(R.id.ingredients_tv);
 
         Intent intent = getIntent();
         if (intent == null) {
@@ -34,9 +39,10 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
+
         String[] sandwiches = getResources().getStringArray(R.array.sandwich_details);
         String json = sandwiches[position];
-        Sandwich sandwich = JsonUtils.parseSandwichJson(json);
+        Sandwich sandwich = JsonUtils.parseSandwichJson(json); //This is the method we are working on
         if (sandwich == null) {
             // Sandwich data unavailable
             closeOnError();
@@ -57,6 +63,12 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI() {
+
+        //TODO populate the text views!
+
+
+
+
 
     }
 }
