@@ -31,18 +31,15 @@ public class JsonUtils {
             try {
                 jsonObject = new JSONObject(json);
 
-                JSONArray sandwichData = jsonObject.getJSONArray("sandwich_details");
+                JSONObject nameJSON = jsonObject.getJSONObject("name");
 
-                for (int i = 0; i < sandwichData.length(); i++) {
+                nameMain = nameJSON.getString("mainName");
+                sandwich.setMainName(nameMain);
 
-                    nameMain = sandwichData.getJSONObject(i).getString("name");
+                //TODO nameAkas
 
-                    sandwich.setMainName(nameMain);
-
-                    //TODO nameAka
-
-                    origin = jsonObject.getString("placeOfOrigin");
-                    sandwich.setPlaceOfOrigin(origin);
+                origin = jsonObject.getString("placeOfOrigin");
+                sandwich.setPlaceOfOrigin(origin);
 
                     description = jsonObject.getString("description");
                     sandwich.setDescription(description);
@@ -51,8 +48,6 @@ public class JsonUtils {
                     sandwich.setImage(imageUrl);
 
                     //TODO ingredients
-
-                }
 
             } catch (JSONException e) {
                 e.printStackTrace();

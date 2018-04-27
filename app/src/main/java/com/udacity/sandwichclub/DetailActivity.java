@@ -52,10 +52,6 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
-        //FOR DEBUG ONLY
-        Toast noSandwichToast = Toast.makeText(this,"GOT SANDWICH!",Toast.LENGTH_LONG);
-        noSandwichToast.show();
-
         populateUI(sandwich);
         Picasso.with(this)
                 .load(sandwich.getImage())
