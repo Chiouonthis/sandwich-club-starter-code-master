@@ -12,7 +12,6 @@ import java.util.List;
 
 public class JsonUtils {
 
-    //TODO complete the method body below
     public static Sandwich parseSandwichJson(String json){
 
         Sandwich sandwich = new Sandwich();
@@ -26,8 +25,6 @@ public class JsonUtils {
             String imageUrl;
             List<String> ingredients;
 
-            //TODO get attributes/values from JSON and add to sandwich instance variable
-
             JSONObject jsonObject;
             try {
                 jsonObject = new JSONObject(json);
@@ -36,7 +33,15 @@ public class JsonUtils {
                 nameMain = nameJSON.getString("mainName");
                 sandwich.setMainName(nameMain);
 
-                //TODO nameAkas
+                nameAka = new ArrayList<>();
+
+                JSONArray sandwichAliases = nameJSON.getJSONArray("alsoKnownAs");
+                if (sandwichAliases.length()>0){
+                    for(int i = 0; i<sandwichAliases.length();i++){
+                        nameAka.add(sandwichAliases.getString(i));
+                    }
+                }
+                sandwich.setAlsoKnownAs(nameAka);
 
                 origin = jsonObject.getString("placeOfOrigin");
                 sandwich.setPlaceOfOrigin(origin);
@@ -47,7 +52,6 @@ public class JsonUtils {
                 imageUrl = jsonObject.getString("image");
                 sandwich.setImage(imageUrl);
 
-                //TODO ingredients
                 JSONArray ingredientsJSON = jsonObject.getJSONArray("ingredients");
 
                 ingredients = new ArrayList<>();
@@ -57,7 +61,7 @@ public class JsonUtils {
                 }
 
                 sandwich.setIngredients(ingredients);
-                
+
                 return sandwich;
 
             } catch (JSONException e) {
