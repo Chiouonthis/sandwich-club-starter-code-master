@@ -2,6 +2,7 @@ package com.udacity.sandwichclub.utils;
 
 import com.udacity.sandwichclub.model.Sandwich;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,22 +31,28 @@ public class JsonUtils {
             try {
                 jsonObject = new JSONObject(json);
 
-                nameMain = jsonObject.getString("mainName");
-                sandwich.setMainName(nameMain);
+                JSONArray sandwichData = jsonObject.getJSONArray("sandwich_details");
 
-                //TODO nameAka
+                for (int i = 0; i < sandwichData.length(); i++) {
 
-                origin = jsonObject.getString("placeOfOrigin");
-                sandwich.setPlaceOfOrigin(origin);
+                    nameMain = sandwichData.getJSONObject(i).getString("name");
 
-                description = jsonObject.getString("description");
-                sandwich.setDescription(description);
+                    sandwich.setMainName(nameMain);
 
-                imageUrl = jsonObject.getString("image");
-                sandwich.setImage(imageUrl);
+                    //TODO nameAka
 
-                //TODO ingredients
+                    origin = jsonObject.getString("placeOfOrigin");
+                    sandwich.setPlaceOfOrigin(origin);
 
+                    description = jsonObject.getString("description");
+                    sandwich.setDescription(description);
+
+                    imageUrl = jsonObject.getString("image");
+                    sandwich.setImage(imageUrl);
+
+                    //TODO ingredients
+
+                }
 
             } catch (JSONException e) {
                 e.printStackTrace();
