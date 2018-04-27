@@ -46,8 +46,6 @@ public class DetailActivity extends AppCompatActivity {
         Sandwich sandwich = JsonUtils.parseSandwichJson(json);
         if (sandwich == null) {
             // Sandwich data unavailable
-            Toast noSandwichToast = Toast.makeText(this,"No sandwich!",Toast.LENGTH_LONG);
-            noSandwichToast.show();
             closeOnError();
             return;
         }

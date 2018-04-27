@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JsonUtils {
@@ -32,7 +33,6 @@ public class JsonUtils {
                 jsonObject = new JSONObject(json);
 
                 JSONObject nameJSON = jsonObject.getJSONObject("name");
-
                 nameMain = nameJSON.getString("mainName");
                 sandwich.setMainName(nameMain);
 
@@ -41,19 +41,28 @@ public class JsonUtils {
                 origin = jsonObject.getString("placeOfOrigin");
                 sandwich.setPlaceOfOrigin(origin);
 
-                    description = jsonObject.getString("description");
-                    sandwich.setDescription(description);
+                description = jsonObject.getString("description");
+                sandwich.setDescription(description);
 
-                    imageUrl = jsonObject.getString("image");
-                    sandwich.setImage(imageUrl);
+                imageUrl = jsonObject.getString("image");
+                sandwich.setImage(imageUrl);
 
-                    //TODO ingredients
+                //TODO ingredients
+                JSONArray ingredientsJSON = jsonObject.getJSONArray("ingredients");
+
+                ingredients = new ArrayList<>();
+
+                for (int i = 0; i<ingredientsJSON.length();i++){
+                    ingredients.add(ingredientsJSON.getString(i));
+                }
+
+                sandwich.setIngredients(ingredients);
+                
+                return sandwich;
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-            return sandwich;
 
         }
 
