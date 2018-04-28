@@ -45,10 +45,8 @@ public class JsonUtils {
                 Log.d(TAG,"JSONArray length is  " + sandwichAliases.length());
                 if (sandwichAliases.length()>0){
                     for(int i = 0; i<sandwichAliases.length();i++){
-                        nameAka.add(sandwichAliases.getString(i));
+                        nameAka.add(sandwichAliases.getString(i) + ", ");
                     }
-                }else{
-                    nameAka.add("");
                 }
                 Log.d(TAG,"nameAka is  " + nameAka);
                 sandwich.setAlsoKnownAs(nameAka);
