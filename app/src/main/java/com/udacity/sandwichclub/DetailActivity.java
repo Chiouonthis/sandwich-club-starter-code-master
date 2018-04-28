@@ -53,6 +53,7 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
+
         populateUI(sandwich);
         Picasso.with(this)
                 .load(sandwich.getImage())
@@ -71,12 +72,19 @@ public class DetailActivity extends AppCompatActivity {
     private void populateUI(Sandwich sandwich) {
         //TODO populate the text views!
 
-        //mAlsoKnownAs = findViewById(R.id.also_known_tv);
-        //mOrigin =  findViewById(R.id.origin_tv);
-        //mOrigin.setText(sandwich.getPlaceOfOrigin());
-        //mDescription = findViewById(R.id.description_tv);
-        //mIngredients = findViewById(R.id.ingredients_tv);
-        //mDescription.setText(sandwich.getDescription());
+        ingredientsIv = findViewById(R.id.image_iv);
+        mAlsoKnownAs = findViewById(R.id.also_known_tv);
+
+        mOrigin =  findViewById(R.id.origin_tv);
+        Log.d(TAG,sandwich.getPlaceOfOrigin());
+        mOrigin.setText(sandwich.getPlaceOfOrigin());
+
+        mDescription = findViewById(R.id.description_tv);
+
+        mIngredients = findViewById(R.id.ingredients_tv);
+
+        mDescription.setText(sandwich.getDescription());
+        Log.d(TAG,sandwich.getDescription());
 
 
 
