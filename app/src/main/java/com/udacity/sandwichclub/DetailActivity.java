@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import com.udacity.sandwichclub.utils.JsonUtils;
 
 public class DetailActivity extends AppCompatActivity {
 
+    public static final String TAG = "Detail Activity.java";
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
     public ImageView ingredientsIv;
@@ -44,6 +46,7 @@ public class DetailActivity extends AppCompatActivity {
         String[] sandwiches = getResources().getStringArray(R.array.sandwich_details);
         String json = sandwiches[position];
         Sandwich sandwich = JsonUtils.parseSandwichJson(json);
+        Log.d(TAG,sandwich.toString());
         if (sandwich == null) {
             // Sandwich data unavailable
             closeOnError();
@@ -68,13 +71,12 @@ public class DetailActivity extends AppCompatActivity {
     private void populateUI(Sandwich sandwich) {
         //TODO populate the text views!
 
-        ingredientsIv = findViewById(R.id.image_iv);
-        mAlsoKnownAs = findViewById(R.id.also_known_tv);
-        mOrigin =  findViewById(R.id.origin_tv);
-        mDescription = findViewById(R.id.description_tv);
-        mIngredients = findViewById(R.id.ingredients_tv);
-        mDescription.setText(sandwich.getDescription());
-        mOrigin.setText(sandwich.getPlaceOfOrigin());
+        //mAlsoKnownAs = findViewById(R.id.also_known_tv);
+        //mOrigin =  findViewById(R.id.origin_tv);
+        //mOrigin.setText(sandwich.getPlaceOfOrigin());
+        //mDescription = findViewById(R.id.description_tv);
+        //mIngredients = findViewById(R.id.ingredients_tv);
+        //mDescription.setText(sandwich.getDescription());
 
 
 
