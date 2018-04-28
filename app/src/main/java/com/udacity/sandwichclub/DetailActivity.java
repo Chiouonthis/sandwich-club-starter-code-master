@@ -13,6 +13,8 @@ import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
 
+import java.util.List;
+
 public class DetailActivity extends AppCompatActivity {
 
     public static final String TAG = "Detail Activity.java";
@@ -73,7 +75,19 @@ public class DetailActivity extends AppCompatActivity {
         //TODO populate the text views!
 
         ingredientsIv = findViewById(R.id.image_iv);
+
         mAlsoKnownAs = findViewById(R.id.also_known_tv);
+        String aliasString = "";
+        if(sandwich.getAlsoKnownAs().isEmpty()){
+            mAlsoKnownAs.setText(aliasString);
+        } else {
+            List<String> aliases = sandwich.getAlsoKnownAs();
+            for(String name : aliases){
+                aliasString += name;
+            }
+            aliasString = aliasString.substring(0, aliasString.length()-2);
+            mAlsoKnownAs.setText(aliasString);
+        }
 
         mOrigin =  findViewById(R.id.origin_tv);
         Log.d(TAG,sandwich.getPlaceOfOrigin());
