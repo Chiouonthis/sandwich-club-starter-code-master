@@ -68,7 +68,7 @@ public class JsonUtils {
                 ingredients = new ArrayList<>();
 
                 for (int i = 0; i<ingredientsJSON.length();i++){
-                    ingredients.add(ingredientsJSON.getString(i));
+                    ingredients.add(ingredientsJSON.getString(i) + ", ");
                 }
                 Log.d(TAG,"Ingredients list is empty: " + ingredients.isEmpty());
 
